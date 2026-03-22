@@ -98,6 +98,7 @@ brew bundle dump --file=~/.Brewfile --force
 | `home-assistant` | Home automation dashboard |
 | `vlc` | Media player |
 | `handbrake-app` | Video transcoder |
+| `autodesk-fusion` | Autodesk Fusion 360 — CAD/CAM design tool |
 | `bambu-studio` | 3D printing slicer for Bambu Lab printers |
 
 ### Fonts
