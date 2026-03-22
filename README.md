@@ -22,7 +22,7 @@ brew install --cask ghostty font-jetbrains-mono-nerd-font
 ```sh
 git clone git@github.com:aodesser/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-stow zsh bash tmux vim ghostty atuin git-home git-config starship
+stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile
 ```
 
 Then create your local Git identity file (not stored in the repo):
@@ -33,6 +33,18 @@ cat > ~/.gitconfig.local << 'EOF'
 	name = Your Name
 	email = you@example.com
 EOF
+```
+
+Then install all packages from the Brewfile:
+
+```sh
+brew bundle --global
+```
+
+Then apply macOS system defaults:
+
+```sh
+bash ~/.dotfiles/scripts/macos.sh
 ```
 
 Each argument to `stow` is a package — it creates symlinks from that package's contents into `$HOME`.
@@ -50,6 +62,7 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `git-home` | `~/.gitconfig` |
 | `git-config` | `~/.config/git/ignore` |
 | `starship` | `~/.config/starship.toml` |
+| `brewfile` | `~/.Brewfile` |
 
 ### To stow a single package
 
