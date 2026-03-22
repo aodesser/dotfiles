@@ -6,22 +6,30 @@ Personal shell, editor, and terminal configuration managed with [GNU Stow](https
 
 ## Fresh Install
 
+**1. Install Homebrew**
 ```sh
-# 1. Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-# 2. Install stow and clone dotfiles
+**2. Install stow and clone dotfiles**
+```sh
 brew install stow
 git clone git@github.com:aodesser/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+```
 
-# 3. Stow all packages
+**3. Stow all packages**
+```sh
 stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile
+```
 
-# 4. Install everything from Brewfile (see docs/BREWFILE.md)
+**4. Install everything from the Brewfile** — [see what gets installed](docs/BREWFILE.md)
+```sh
 brew bundle --global
+```
 
-# 5. Apply macOS defaults (see docs/MACOS.md)
+**5. Apply macOS defaults** — [see what changes](docs/MACOS.md)
+```sh
 bash ~/.dotfiles/scripts/macos.sh
 ```
 
