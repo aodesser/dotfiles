@@ -1,0 +1,10 @@
+[user]
+	name = Alex Odesser
+	email = alex@odesser.org
+[core]
+	pager = delta
+[delta]
+	navigate = true
+	side-by-side = true
+[interactive]
+	diffFilter = delta --color-only
