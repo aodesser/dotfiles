@@ -18,10 +18,10 @@ cd ~/.dotfiles
 # 3. Stow all packages
 stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile
 
-# 4. Install everything from Brewfile
+# 4. Install everything from Brewfile (see docs/BREWFILE.md)
 brew bundle --global
 
-# 5. Apply macOS defaults
+# 5. Apply macOS defaults (see docs/MACOS.md)
 bash ~/.dotfiles/scripts/macos.sh
 ```
 
@@ -33,12 +33,6 @@ cat > ~/.gitconfig.local << 'EOF'
 	name = Your Name
 	email = you@example.com
 EOF
-```
-
-Then apply macOS system defaults:
-
-```sh
-bash ~/.dotfiles/scripts/macos.sh
 ```
 
 Each argument to `stow` is a package — it creates symlinks from that package's contents into `$HOME`.
