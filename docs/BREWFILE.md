@@ -94,6 +94,7 @@ brew bundle dump --file=~/.Brewfile --force
 
 | App | What it does |
 |---|---|
+| `1password` | Password manager |
 | `logi-options+` | Logitech mouse and keyboard customization |
 | `home-assistant` | Home automation dashboard |
 | `vlc` | Media player |
