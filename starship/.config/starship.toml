@@ -1,3 +1,5 @@
+right_format = "$time"
+
 [username]
 show_always = true
 format = "[$user]($style)@"
@@ -35,7 +37,7 @@ format = "[$symbol $status]($style) "
 
 [time]
 disabled = false
-format = "[🕐 $time]($style) "
+format = "[🕐 $time]($style)"
 time_format = "%H:%M"
 
 [kubernetes]
