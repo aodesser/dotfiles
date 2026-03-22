@@ -1,78 +1,162 @@
 # dotfiles
 
-Personal shell and editor configuration, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal shell, editor, and terminal configuration managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-## Installation
+---
+
+## Prerequisites
+
+Install the following before setting up dotfiles:
+
+```sh
+# Homebrew (macOS package manager)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# GNU Stow
+brew install stow
+
+# Shell tools
+brew install starship zoxide fzf atuin eza bat lazygit
+
+# Fonts (for terminal icons)
+brew install --cask font-jetbrains-mono-nerd-font
+
+# Terminal
+brew install --cask ghostty
+
+# Tmux
+brew install tmux
+
+# Git tools
+brew install git-delta
+```
+
+---
+
+## Fresh Install
 
 ```sh
 git clone git@github.com:aodesser/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-stow .
+stow zsh bash tmux vim ghostty atuin git-home git-config
 ```
 
-`stow .` symlinks every tracked file from this directory into `$HOME`.
+Each argument to `stow` is a package — it creates symlinks from that package's contents into `$HOME`.
+
+### What gets symlinked
+
+| Package | Symlink(s) created |
+|---|---|
+| `zsh` | `~/.zshrc`, `~/.zprofile` |
+| `bash` | `~/.bash_profile` |
+| `tmux` | `~/.tmux.conf` |
+| `vim` | `~/.vimrc` |
+| `ghostty` | `~/.config/ghostty/config` |
+| `atuin` | `~/.config/atuin/config.toml` |
+| `git-home` | `~/.gitconfig` |
+| `git-config` | `~/.config/git/ignore` |
+
+### To stow a single package
+
+```sh
+cd ~/.dotfiles
+stow ghostty
+```
+
+### To remove a package's symlinks
+
+```sh
+cd ~/.dotfiles
+stow -D ghostty
+```
+
+### To add a new tool
+
+1. Create a package directory mirroring the `$HOME` structure:
+   ```sh
+   mkdir -p ~/.dotfiles/mytool/.config/mytool
+   mv ~/.config/mytool/config ~/.dotfiles/mytool/.config/mytool/config
+   ```
+2. Run stow:
+   ```sh
+   cd ~/.dotfiles && stow mytool
+   ```
+3. Commit and push.
 
 ---
 
-## Files
+## Packages
 
-### `.zprofile`
-Runs once at login for zsh. Initialises **Homebrew** (`/opt/homebrew`) so that all brew-installed binaries are available in `$PATH` before any interactive shell starts.
+### `zsh`
 
-### `.zshrc`
-Main interactive-shell config. Loaded for every new terminal tab/window.
+Main shell config. Loaded for every new terminal session.
 
-- **SDKMAN** – Java/Kotlin SDK version manager, sourced first so the shim is available.
-- **Starship** – cross-shell prompt (`starship init zsh`).
-- **Zinit** – lightweight zsh plugin manager; auto-installs itself on first run.
-  - `zsh-autosuggestions` – ghost-text suggestions from history.
-  - `zsh-syntax-highlighting` – real-time command colouring.
-  - `fzf-tab` – replaces the default tab-completion menu with fzf.
-- **fzf** – fuzzy finder keybindings and completion (`Ctrl+R`, `Ctrl+T`, `Alt+C`).
-- **zoxide** – smarter `cd` with frecency tracking (`z <dir>`).
-- **atuin** – replaces shell history with a SQLite-backed, searchable store.
-- **Aliases** – `ls`/`ll`/`lt` → `eza`, `cat` → `bat`, `lg` → `lazygit`.
-- **git-delta** – configures `delta` as the global git pager for rich diffs.
+- **Starship** – cross-shell prompt
+- **Zinit** – plugin manager; auto-installs on first run
+  - `zsh-autosuggestions` – ghost-text suggestions from history
+  - `zsh-syntax-highlighting` – real-time command colouring
+  - `zsh-completions` – extended completion definitions
+  - `fzf-tab` – replaces tab-completion menu with fzf
+- **fzf** – fuzzy finder (`Ctrl+R`, `Ctrl+T`, `Alt+C`)
+- **zoxide** – smarter `cd` with frecency tracking (`z <dir>`)
+- **atuin** – SQLite-backed shell history with fuzzy search
+- **Aliases** – `ls`/`ll`/`lt` → `eza`, `cat` → `bat`, `lg` → `lazygit`
 
-### `.bash_profile`
-Loaded by bash at login. Contains the **SDKMAN** initialisation block that the SDKMAN installer appends automatically. Kept here so the installer's requirement ("must be at end of file") is satisfied without touching `.zprofile`.
+### `bash`
 
-### `.tmux.conf`
-Full tmux configuration with a **Catppuccin Mocha**-inspired colour scheme.
+Contains the SDKMAN initialisation block (auto-appended by the SDKMAN installer).
 
-Key choices:
+### `tmux`
+
+Full tmux configuration with a Catppuccin Mocha colour scheme.
+
 | Feature | Detail |
 |---|---|
-| Prefix | `Ctrl+A` (muscle-memory from screen) |
+| Prefix | `Ctrl+A` |
 | Vi copy mode | `v` to select, `y` to yank → `pbcopy` |
-| Splits | `\|` horizontal, `-` vertical, both inherit current path |
-| Pane nav | `h/j/k/l` (mirrors Vim splits) |
-| Status bar | Top-mounted; shifts purple when a pane is zoomed |
-| Scratchpad popup | `Prefix+Space` – floating terminal with a live clock |
-| Sessionizer | `Prefix+f` – fzf picker over existing sessions |
-| Project mode | `Prefix+P` – `fd` search into `~/Code`, `~/Projects`, etc. |
+| Splits | `\|` horizontal, `-` vertical, inherit current path |
+| Pane nav | `h/j/k/l` (mirrors Vim) |
+| Status bar | Top-mounted; turns purple when a pane is zoomed |
+| Scratchpad | `Prefix+Space` – floating terminal |
+| Sessionizer | `Prefix+f` – fzf picker over sessions |
+| Project mode | `Prefix+P` – `fd` search into `~/Code`, `~/Projects` |
 
-### `.vimrc`
-Vim configuration using **vim-plug** as the plugin manager and **Catppuccin Mocha** as the colourscheme.
+### `vim`
 
-Plugins:
+Vim config using **vim-plug** and **Catppuccin Mocha**. Leader key is `Space`.
+
 | Plugin | Purpose |
 |---|---|
-| fzf / fzf.vim | Fuzzy file/buffer/ripgrep search (`<leader>f/g/r`) |
+| fzf / fzf.vim | Fuzzy file/buffer/grep search (`<leader>f/g/r`) |
 | NERDTree | File-tree sidebar (`<leader>e`) |
-| lightline | Minimal status line showing git branch |
-| vim-fugitive | Full Git workflow inside Vim (`<leader>gs/gc/gp/gl`) |
-| vim-gitgutter | Live diff signs in the sign column |
-| vim-surround | Change/add/delete surrounding chars (`cs"'`) |
-| auto-pairs | Auto-close brackets and quotes |
-| vim-commentary | Toggle comments (`gcc`, `gc` in visual) |
+| lightline | Minimal status line |
+| vim-fugitive | Git workflow inside Vim |
+| vim-gitgutter | Live diff signs |
+| vim-surround | Change surrounding chars |
+| auto-pairs | Auto-close brackets/quotes |
+| vim-commentary | Toggle comments (`gcc`) |
 | vim-visual-multi | Multiple cursors (`Ctrl+N`) |
-| indentLine | Thin vertical indent guides |
 | vim-polyglot | Syntax highlighting for 100+ languages |
-| vim-smoothie | Smooth `Ctrl+D/U` scrolling |
-| vim-startify | Start screen with recent files and sessions |
 
-Leader key is `Space`. Split navigation uses `Ctrl+h/j/k/l` to match tmux pane nav.
+### `ghostty`
 
-### `.stow-local-ignore`
-Tells GNU Stow **not** to symlink `.DS_Store` files into `$HOME`. Without this, Stow would create a `~/.DS_Store` symlink on macOS.
+Ghostty terminal config.
+
+| Setting | Value |
+|---|---|
+| Font | JetBrainsMono Nerd Font, 14pt |
+| Theme | Catppuccin Mocha |
+| Opacity | 95% |
+| Shell integration | cursor, sudo, title |
+
+### `atuin`
+
+Replaces shell history with a SQLite-backed store. Syncs across machines if configured.
+
+### `git-home`
+
+`~/.gitconfig` — user identity and git-delta as the pager for rich diffs.
+
+### `git-config`
+
+`~/.config/git/ignore` — global gitignore.
