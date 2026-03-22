@@ -6,6 +6,10 @@ format = "[$user]($style)@"
 ssh_only = false
 format = "[$hostname]($style) "
 
+[directory]
+truncation_length = 1
+style = "bold cyan"
+
 [line_break]
 disabled = true
 
@@ -19,6 +23,28 @@ deleted = "[-${count}](red)"
 untracked = "[?${count}](grey)"
 ahead = "⇡${count}"
 behind = "⇣${count}"
+
+[cmd_duration]
+min_time = 2_000
+format = "[took $duration](bold yellow)"
+
+[status]
+disabled = false
+symbol = "✗"
+format = "[$symbol $status]($style) "
+
+[time]
+disabled = false
+format = "[🕐 $time]($style) "
+time_format = "%H:%M"
+
+[kubernetes]
+disabled = false
+format = "[⎈ $context\\($namespace\\)]($style) "
+
+[aws]
+disabled = false
+format = "[☁️ $profile]($style) "
 
 # Disable language version modules
 [gradle]
