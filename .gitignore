@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim runtime state
+.viminfo
+
+# Zsh session state
+.zsh_sessions/
+
+# Claude Code config (may contain tokens/settings)
+.claude.json
+
+# Stow metadata
+.stow-local-ignore
