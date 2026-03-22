@@ -22,7 +22,7 @@ brew install --cask ghostty font-jetbrains-mono-nerd-font
 ```sh
 git clone git@github.com:aodesser/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-stow zsh bash tmux vim ghostty atuin git-home git-config
+stow zsh bash tmux vim ghostty atuin git-home git-config starship
 ```
 
 Then create your local Git identity file (not stored in the repo):
@@ -49,6 +49,7 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `atuin` | `~/.config/atuin/config.toml` |
 | `git-home` | `~/.gitconfig` |
 | `git-config` | `~/.config/git/ignore` |
+| `starship` | `~/.config/starship.toml` |
 
 ### To stow a single package
 
@@ -154,3 +155,19 @@ Replaces shell history with a SQLite-backed store. Syncs across machines if conf
 ### `git-config`
 
 `~/.config/git/ignore` — global gitignore.
+
+### `starship`
+
+Cross-shell prompt configuration.
+
+| Module | What it shows |
+|---|---|
+| `username` + `hostname` | `user@host` prefix |
+| `directory` | Current folder (1 level, bold cyan) |
+| `git_branch` | Active branch |
+| `git_status` | `+` staged, `~` modified, `-` deleted, `?` untracked |
+| `cmd_duration` | Command duration when > 2s |
+| `status` | Exit code when last command failed |
+| `time` | Current time (right-aligned) |
+| `kubernetes` | Active kubectl context/namespace (when set) |
+| `aws` | Active AWS profile (when set) |
