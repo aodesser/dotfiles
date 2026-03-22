@@ -6,29 +6,11 @@ Personal shell, editor, and terminal configuration managed with [GNU Stow](https
 
 ## Prerequisites
 
-Install the following before setting up dotfiles:
+Install [Homebrew](https://brew.sh) first, then:
 
 ```sh
-# Homebrew (macOS package manager)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# GNU Stow
-brew install stow
-
-# Shell tools
-brew install starship zoxide fzf atuin eza bat lazygit
-
-# Fonts (for terminal icons)
-brew install --cask font-jetbrains-mono-nerd-font
-
-# Terminal
-brew install --cask ghostty
-
-# Tmux
-brew install tmux
-
-# Git tools
-brew install git-delta
+brew install stow starship zoxide fzf atuin eza bat lazygit tmux git-delta && \
+brew install --cask ghostty font-jetbrains-mono-nerd-font
 ```
 
 ---
