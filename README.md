@@ -4,25 +4,25 @@ Personal shell, editor, and terminal configuration managed with [GNU Stow](https
 
 ---
 
-## Prerequisites
-
-```sh
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install tools
-brew install stow starship zoxide fzf atuin eza bat lazygit tmux git-delta && \
-brew install --cask ghostty font-jetbrains-mono-nerd-font
-```
-
----
-
 ## Fresh Install
 
 ```sh
+# 1. Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 2. Install stow and clone dotfiles
+brew install stow
 git clone git@github.com:aodesser/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+
+# 3. Stow all packages
 stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile
+
+# 4. Install everything from Brewfile
+brew bundle --global
+
+# 5. Apply macOS defaults
+bash ~/.dotfiles/scripts/macos.sh
 ```
 
 Then create your local Git identity file (not stored in the repo):
@@ -33,12 +33,6 @@ cat > ~/.gitconfig.local << 'EOF'
 	name = Your Name
 	email = you@example.com
 EOF
-```
-
-Then install all packages from the Brewfile:
-
-```sh
-brew bundle --global
 ```
 
 Then apply macOS system defaults:
