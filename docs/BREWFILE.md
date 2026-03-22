@@ -97,6 +97,7 @@ brew bundle dump --file=~/.Brewfile --force
 | `1password` | Password manager |
 | `logi-options+` | Logitech mouse and keyboard customization |
 | `home-assistant` | Home automation dashboard |
+| `steam` | Gaming platform |
 | `vlc` | Media player |
 | `handbrake-app` | Video transcoder |
 | `autodesk-fusion` | Autodesk Fusion 360 — CAD/CAM design tool |
