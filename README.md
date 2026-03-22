@@ -6,9 +6,11 @@ Personal shell, editor, and terminal configuration managed with [GNU Stow](https
 
 ## Prerequisites
 
-Install [Homebrew](https://brew.sh) first, then:
-
 ```sh
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install tools
 brew install stow starship zoxide fzf atuin eza bat lazygit tmux git-delta && \
 brew install --cask ghostty font-jetbrains-mono-nerd-font
 ```
