@@ -23,11 +23,14 @@ cd ~/.dotfiles
 stow zsh bash tmux vim ghostty atuin git-home git-config
 ```
 
-Then set your Git identity (not stored in the repo):
+Then create your local Git identity file (not stored in the repo):
 
 ```sh
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+cat > ~/.gitconfig.local << 'EOF'
+[user]
+	name = Your Name
+	email = you@example.com
+EOF
 ```
 
 Each argument to `stow` is a package — it creates symlinks from that package's contents into `$HOME`.

@@ -12,5 +12,8 @@
 # Claude Code config (may contain tokens/settings)
 .claude.json
 
+# Git local identity (name/email — set manually per machine)
+.gitconfig.local
+
 # Stow metadata
 .stow-local-ignore
