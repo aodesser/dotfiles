@@ -17,3 +17,4 @@
 
 # Stow metadata
 .stow-local-ignore
+tmux/.config/tmux/plugins/

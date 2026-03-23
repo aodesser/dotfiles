@@ -51,7 +51,7 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 |---|---|
 | `zsh` | `~/.zshrc`, `~/.zprofile` |
 | `bash` | `~/.bash_profile` |
-| `tmux` | `~/.tmux.conf` |
+| `tmux` | `~/.config/tmux/tmux.conf` |
 | `vim` | `~/.vimrc` |
 | `ghostty` | `~/.config/ghostty/config` |
 | `atuin` | `~/.config/atuin/config.toml` |
@@ -112,18 +112,18 @@ Contains the SDKMAN initialisation block (auto-appended by the SDKMAN installer)
 
 ### `tmux`
 
-Full tmux configuration with a Catppuccin Mocha colour scheme.
+Config lives at `~/.config/tmux/tmux.conf` (XDG path). Plugins managed by [TPM](https://github.com/tmux-plugins/tpm).
 
 | Feature | Detail |
 |---|---|
-| Prefix | `Ctrl+A` |
-| Vi copy mode | `v` to select, `y` to yank → `pbcopy` |
-| Splits | `\|` horizontal, `-` vertical, inherit current path |
-| Pane nav | `h/j/k/l` (mirrors Vim) |
-| Status bar | Top-mounted; turns purple when a pane is zoomed |
-| Scratchpad | `Prefix+Space` – floating terminal |
-| Sessionizer | `Prefix+f` – fzf picker over sessions |
-| Project mode | `Prefix+P` – `fd` search into `~/Code`, `~/Projects` |
+| Prefix | `Ctrl+Space` |
+| Mouse | enabled |
+| Theme | Catppuccin Mocha (via `catppuccin/tmux`) |
+| Splits | `"` vertical, `%` horizontal, inherit current path |
+| Yank | `tmux-yank` — copy to system clipboard |
+| Resurrect | `tmux-resurrect` + `tmux-continuum` — auto-save and restore sessions |
+
+After a fresh install, open tmux and run `Prefix + I` to install plugins via TPM.
 
 ### `vim`
 
