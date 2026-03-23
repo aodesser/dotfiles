@@ -113,19 +113,19 @@ require("lazy").setup({
 
   -- Treesitter (replaces vim-polyglot)
   { "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "python", "javascript", "typescript",
-          "go", "rust", "java", "kotlin", "bash", "json", "yaml",
-          "toml", "markdown", "html", "css",
-        },
-        highlight    = { enable = true },
-        indent       = { enable = true },
-        auto_install = true,
-      })
-    end },
+    build  = ":TSUpdate",
+    event  = { "BufReadPost", "BufNewFile" },
+    main   = "nvim-treesitter.configs",
+    opts   = {
+      ensure_installed = {
+        "lua", "vim", "python", "javascript", "typescript",
+        "go", "rust", "java", "kotlin", "bash", "json", "yaml",
+        "toml", "markdown", "html", "css",
+      },
+      highlight    = { enable = true },
+      indent       = { enable = true },
+      auto_install = true,
+    } },
 
   -- Smooth scrolling
   { "karb94/neoscroll.nvim", config = true },
