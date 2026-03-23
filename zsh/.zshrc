@@ -70,6 +70,8 @@ alias ll="eza -la --icons --git"
 alias lt="eza --tree --icons"
 alias cat="bat"
 alias lg="lazygit"
+alias vi="nvim"
+alias vim="nvim"
 
 # git-delta
 [[ -f ~/.gitconfig ]] || touch ~/.gitconfig
