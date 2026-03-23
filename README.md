@@ -33,8 +33,12 @@ brew bundle --global
 bash ~/.dotfiles/scripts/macos.sh
 ```
 
-Then create your local Git identity file (not stored in the repo):
+**6. Bootstrap tools (TPM, etc.)**
+```sh
+bash ~/.dotfiles/scripts/bootstrap.sh
+```
 
+**7. Set your Git identity** (not stored in the repo):
 ```sh
 cat > ~/.gitconfig.local << 'EOF'
 [user]
@@ -123,7 +127,7 @@ Config lives at `~/.config/tmux/tmux.conf` (XDG path). Plugins managed by [TPM](
 | Yank | `tmux-yank` — copy to system clipboard |
 | Resurrect | `tmux-resurrect` + `tmux-continuum` — auto-save and restore sessions |
 
-After a fresh install, open tmux and run `Prefix + I` to install plugins via TPM.
+Plugins are installed automatically by `scripts/bootstrap.sh`. If needed, run `Prefix+I` inside tmux to manually install or update plugins.
 
 ### `vim`
 
