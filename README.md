@@ -20,7 +20,7 @@ cd ~/.dotfiles
 
 **3. Stow all packages**
 ```sh
-stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile claude
+stow zsh bash tmux vim ghostty atuin git-config starship brewfile claude
 ```
 
 **4. Install everything from the Brewfile** — [see what gets installed](docs/BREWFILE.md)
@@ -71,11 +71,10 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `zsh` | `~/.zshrc`, `~/.zprofile` |
 | `bash` | `~/.bash_profile` |
 | `tmux` | `~/.config/tmux/tmux.conf` |
-| `vim` | `~/.vimrc` |
+| `vim` | `~/.vim/vimrc` |
 | `ghostty` | `~/.config/ghostty/config` |
 | `atuin` | `~/.config/atuin/config.toml` |
-| `git-home` | `~/.gitconfig` |
-| `git-config` | `~/.config/git/ignore` |
+| `git-config` | `~/.config/git/config`, `~/.config/git/ignore` |
 | `starship` | `~/.config/starship.toml` |
 | `brewfile` | `~/.Brewfile` |
 | `claude` | `~/.claude/settings.json`, `~/.claude/statusline.sh` |
@@ -177,13 +176,14 @@ Ghostty terminal config.
 
 Replaces shell history with a SQLite-backed store. Syncs across machines if configured.
 
-### `git-home`
-
-`~/.gitconfig` — user identity and git-delta as the pager for rich diffs.
-
 ### `git-config`
 
-`~/.config/git/ignore` — global gitignore.
+XDG git config at `~/.config/git/`.
+
+| File | Purpose |
+|---|---|
+| `config` | General git config — delta pager, includes `~/.gitconfig.local` for identity |
+| `ignore` | Global gitignore |
 
 ### `starship`
 
