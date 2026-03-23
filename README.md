@@ -20,7 +20,7 @@ cd ~/.dotfiles
 
 **3. Stow all packages**
 ```sh
-stow zsh bash tmux vim ghostty atuin git-config starship brewfile claude
+stow zsh bash tmux vim nvim ghostty atuin git-config starship brewfile claude
 ```
 
 **4. Install everything from the Brewfile** — [see what gets installed](docs/BREWFILE.md)
@@ -72,6 +72,7 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `bash` | `~/.bash_profile` |
 | `tmux` | `~/.config/tmux/tmux.conf` |
 | `vim` | `~/.vim/vimrc` |
+| `nvim` | `~/.config/nvim/init.lua` |
 | `ghostty` | `~/.config/ghostty/config` |
 | `atuin` | `~/.config/atuin/config.toml` |
 | `git-config` | `~/.config/git/config`, `~/.config/git/ignore` |

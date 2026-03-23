@@ -28,7 +28,8 @@ brew bundle dump --file=~/.Brewfile --force
 | `stow` | Symlink manager for dotfiles |
 | `tldr` | Simplified man pages with practical examples |
 | `tmux` | Terminal multiplexer — split panes, sessions, windows |
-| `vim` | Terminal text editor |
+| `neovim` | Modern Vim — primary editor, Lua config with lazy.nvim |
+| `vim` | Classic Vim — kept as fallback |
 | `wget` | File downloader |
 | `zoxide` | Smarter `cd` with frecency tracking (`z <dir>`) |
 | `zsh-autosuggestions` | Ghost-text command suggestions from history |
