@@ -1,0 +1,143 @@
+{
+  "cleanupPeriodDays": 90,
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  },
+  "includeGitInstructions": true,
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(brew:*)",
+      "Bash(cargo:*)",
+      "Bash(go:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(jq:*)",
+      "Bash(which:*)",
+      "Bash(env:*)",
+      "Bash(pwd:*)",
+      "Bash(date:*)",
+      "Bash(whoami:*)",
+      "Bash(curl:*)",
+      "Bash(open:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /:*)",
+      "Bash(sudo rm -rf:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"systemMessage\": \"Session started %s — logs at ~/.claude/bash-history.log\"}' \"$(date +'%H:%M')\"",
+            "statusMessage": "Initializing session..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude finished.\" with title \"Claude Code\" sound name \"Glass\"' 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MSG=$(cat | jq -r '.message // \"Needs attention\"' 2>/dev/null | head -c 80); osascript -e \"display notification \\\"${MSG:-Needs attention}\\\" with title \\\"Claude Code\\\" sound name \\\"Ping\\\"\" 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"[\" + (now | strftime(\"%H:%M:%S\")) + \"] \" + .tool_input.command' >> ~/.claude/bash-history.log 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"[\" + (now | strftime(\"%H:%M:%S\")) + \"] \" + (.tool_input.file_path // \"unknown\")' >> ~/.claude/edits.log 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "$HOME/.claude/statusline.sh"
+  },
+  "spinnerTipsEnabled": true,
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Thinking",
+      "Reasoning",
+      "Analyzing",
+      "Crafting",
+      "Synthesizing",
+      "Computing",
+      "Scheming",
+      "Strategizing",
+      "Architecting",
+      "Debugging",
+      "Refactoring",
+      "Optimizing",
+      "Deliberating",
+      "Brainstorming",
+      "Hacking"
+    ]
+  },
+  "spinnerTipsOverride": {
+    "excludeDefault": false,
+    "tips": [
+      "Prefix with # to add context without triggering a response",
+      "Use /compact to free up context when nearing limits",
+      "Use /plan to enter planning mode before big changes",
+      "Ctrl+R to search input history",
+      "Use @ to reference files inline",
+      "Bash logs are saved to ~/.claude/bash-history.log",
+      "Edit logs are saved to ~/.claude/edits.log"
+    ]
+  },
+  "alwaysThinkingEnabled": true,
+  "autoMemoryEnabled": true,
+  "showThinkingSummaries": true,
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true
+  }
+}

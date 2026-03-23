@@ -20,7 +20,7 @@ cd ~/.dotfiles
 
 **3. Stow all packages**
 ```sh
-stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile
+stow zsh bash tmux vim ghostty atuin git-home git-config starship brewfile claude
 ```
 
 **4. Install everything from the Brewfile** — [see what gets installed](docs/BREWFILE.md)
@@ -63,6 +63,7 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `git-config` | `~/.config/git/ignore` |
 | `starship` | `~/.config/starship.toml` |
 | `brewfile` | `~/.Brewfile` |
+| `claude` | `~/.claude/settings.json`, `~/.claude/statusline.sh` |
 
 ### To stow a single package
 
@@ -184,3 +185,21 @@ Cross-shell prompt configuration.
 | `time` | Current time (right-aligned) |
 | `kubernetes` | Active kubectl context/namespace (when set) |
 | `aws` | Active AWS profile (when set) |
+
+### `claude`
+
+Claude Code settings and statusline script.
+
+| File | Purpose |
+|---|---|
+| `settings.json` | Permissions, hooks, spinner, statusline config |
+| `statusline.sh` | Custom statusline — shows user, folder, git branch/status, model, context bar, time |
+
+**Hooks configured:**
+| Hook | What it does |
+|---|---|
+| `SessionStart` | Prints session start time to prompt |
+| `Stop` | macOS notification when Claude finishes |
+| `Notification` | macOS notification for attention requests |
+| `PreToolUse(Bash)` | Logs every bash command to `~/.claude/bash-history.log` |
+| `PostToolUse(Write\|Edit)` | Logs every file edit to `~/.claude/edits.log` |
