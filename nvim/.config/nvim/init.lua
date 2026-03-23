@@ -57,12 +57,15 @@ require("lazy").setup({
 
   -- Status line
   { "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
+    event = "VeryLazy",
     config = function()
       require("lualine").setup({
         options = {
           theme = "catppuccin",
           globalstatus = true,
+          component_separators = { left = "", right = "" },
+          section_separators   = { left = "", right = "" },
         },
         sections = {
           lualine_a = { "mode" },
@@ -184,7 +187,6 @@ o.scrolloff      = 8
 o.sidescrolloff  = 8
 o.showcmd        = true
 o.showmode       = false
-o.laststatus     = 3
 o.termguicolors  = true
 o.splitright     = true
 o.splitbelow     = true
