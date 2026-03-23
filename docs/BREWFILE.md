@@ -30,7 +30,6 @@ brew bundle dump --file=~/.Brewfile --force
 | `tmux` | Terminal multiplexer — split panes, sessions, windows |
 | `neovim` | Modern Vim — primary editor, Lua config with lazy.nvim |
 | `tree-sitter-cli` | CLI tool for building Neovim treesitter parsers |
-| `vim` | Classic Vim — kept as fallback |
 | `wget` | File downloader |
 | `zoxide` | Smarter `cd` with frecency tracking (`z <dir>`) |
 | `zsh-autosuggestions` | Ghost-text command suggestions from history |

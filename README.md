@@ -20,7 +20,7 @@ cd ~/.dotfiles
 
 **3. Stow all packages**
 ```sh
-stow zsh bash tmux vim nvim ghostty atuin git-config starship brewfile claude
+stow zsh bash tmux nvim ghostty atuin git-config starship brewfile claude
 ```
 
 **4. Install everything from the Brewfile** — [see what gets installed](docs/BREWFILE.md)
@@ -71,7 +71,6 @@ Each argument to `stow` is a package — it creates symlinks from that package's
 | `zsh` | `~/.zshrc`, `~/.zprofile` |
 | `bash` | `~/.bash_profile` |
 | `tmux` | `~/.config/tmux/tmux.conf` |
-| `vim` | `~/.vim/vimrc` |
 | `nvim` | `~/.config/nvim/init.lua` |
 | `ghostty` | `~/.config/ghostty/config` |
 | `atuin` | `~/.config/atuin/config.toml` |
@@ -144,23 +143,6 @@ Config lives at `~/.config/tmux/tmux.conf` (XDG path). Plugins managed by [TPM](
 | Resurrect | `tmux-resurrect` + `tmux-continuum` — auto-save and restore sessions |
 
 Plugins are installed automatically by `scripts/bootstrap.sh`. If needed, run `Prefix+I` inside tmux to manually install or update plugins.
-
-### `vim`
-
-Vim config using **vim-plug** and **Catppuccin Mocha**. Leader key is `Space`.
-
-| Plugin | Purpose |
-|---|---|
-| fzf / fzf.vim | Fuzzy file/buffer/grep search (`<leader>f/g/r`) |
-| NERDTree | File-tree sidebar (`<leader>e`) |
-| lightline | Minimal status line |
-| vim-fugitive | Git workflow inside Vim |
-| vim-gitgutter | Live diff signs |
-| vim-surround | Change surrounding chars |
-| auto-pairs | Auto-close brackets/quotes |
-| vim-commentary | Toggle comments (`gcc`) |
-| vim-visual-multi | Multiple cursors (`Ctrl+N`) |
-| vim-polyglot | Syntax highlighting for 100+ languages |
 
 ### `ghostty`
 
