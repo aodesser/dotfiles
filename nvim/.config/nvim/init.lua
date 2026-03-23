@@ -66,6 +66,9 @@ require("lazy").setup({
           globalstatus = true,
           component_separators = { left = "", right = "" },
           section_separators   = { left = "", right = "" },
+          disabled_filetypes = {
+            statusline = { "TelescopePrompt", "NvimTree", "alpha" },
+          },
         },
         sections = {
           lualine_a = { "mode" },
