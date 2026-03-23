@@ -111,21 +111,22 @@ require("lazy").setup({
       })
     end },
 
-  -- Treesitter (replaces vim-polyglot)
+  -- Treesitter — parser management (Neovim 0.11+ has built-in highlighting)
   { "nvim-treesitter/nvim-treesitter",
-    build  = ":TSUpdate",
-    event  = { "BufReadPost", "BufNewFile" },
-    main   = "nvim-treesitter.configs",
-    opts   = {
-      ensure_installed = {
-        "lua", "vim", "python", "javascript", "typescript",
-        "go", "rust", "java", "kotlin", "bash", "json", "yaml",
-        "toml", "markdown", "html", "css",
-      },
-      highlight    = { enable = true },
-      indent       = { enable = true },
-      auto_install = true,
-    } },
+    build = ":TSUpdate",
+    lazy  = false,
+    config = function()
+      require("nvim-treesitter").setup()
+      -- Install parsers on first run
+      vim.schedule(function()
+        local install = require("nvim-treesitter.install")
+        install.install({
+          "lua", "vim", "python", "javascript", "typescript",
+          "go", "rust", "java", "kotlin", "bash", "json", "yaml",
+          "toml", "markdown", "html", "css",
+        })
+      end)
+    end },
 
   -- Smooth scrolling
   { "karb94/neoscroll.nvim", config = true },
