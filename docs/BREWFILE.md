@@ -85,7 +85,6 @@ brew bundle dump --file=~/.Brewfile --force
 | `iterm2` | Alternative terminal emulator |
 | `docker-desktop` | Docker container runtime and GUI |
 | `jetbrains-toolbox` | Manager for JetBrains IDEs (IntelliJ, etc.) |
-| `macvim-app` | Vim with a native macOS GUI |
 | `codex` | OpenAI Codex CLI |
 | `codex-app` | OpenAI Codex desktop app |
 | `claude` | Anthropic Claude desktop app |
