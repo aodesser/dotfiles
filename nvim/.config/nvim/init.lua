@@ -60,10 +60,13 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
-        options = { theme = "catppuccin" },
+        options = {
+          theme = "catppuccin",
+          globalstatus = true,
+        },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_b = { "branch", "diff" },
           lualine_c = { "filename" },
           lualine_x = { "filetype", "encoding" },
           lualine_y = { "progress" },
