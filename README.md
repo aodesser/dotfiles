@@ -47,6 +47,21 @@ cat > ~/.gitconfig.local << 'EOF'
 EOF
 ```
 
+### Manual steps after install
+
+These can't be automated — do them once after everything above:
+
+| Step | What to do |
+|---|---|
+| **SSH keys** | Copy from backup or generate new ones (`ssh-keygen -t ed25519`) — never commit private keys |
+| **GitHub CLI** | `gh auth login` |
+| **JetBrains Toolbox** | Open the app and install your IDEs |
+| **1Password** | Sign in to restore credentials |
+| **Claude / Ghostty** | Sign in if required |
+| **tmux plugins** | If bootstrap failed, open tmux and press `Prefix+I` |
+
+---
+
 Each argument to `stow` is a package — it creates symlinks from that package's contents into `$HOME`.
 
 ### What gets symlinked
