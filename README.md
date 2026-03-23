@@ -123,7 +123,7 @@ Main shell config. Loaded for every new terminal session.
 - **fzf** – fuzzy finder (`Ctrl+R`, `Ctrl+T`, `Alt+C`)
 - **zoxide** – smarter `cd` with frecency tracking (`z <dir>`)
 - **atuin** – SQLite-backed shell history with fuzzy search
-- **Aliases** – `ls`/`ll`/`lt` → `eza`, `cat` → `bat`, `lg` → `lazygit`
+- **Aliases** – `ls`/`ll`/`lt` → `eza`, `cat` → `bat`, `lg` → `lazygit`, `vi`/`vim` → `nvim`
 
 ### `bash`
 
@@ -143,6 +143,29 @@ Config lives at `~/.config/tmux/tmux.conf` (XDG path). Plugins managed by [TPM](
 | Resurrect | `tmux-resurrect` + `tmux-continuum` — auto-save and restore sessions |
 
 Plugins are installed automatically by `scripts/bootstrap.sh`. If needed, run `Prefix+I` inside tmux to manually install or update plugins.
+
+### `nvim`
+
+Neovim config at `~/.config/nvim/init.lua`. Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim) (auto-installs on first run).
+
+| Plugin | Purpose |
+|---|---|
+| `telescope.nvim` | Fuzzy finder — files, git, grep, buffers (`<leader>f/g/r/b`) |
+| `nvim-tree` | File tree sidebar (`<leader>e/E`) |
+| `lualine` | Status line with Catppuccin Mocha theme |
+| `gitsigns` | Live git diff signs in the gutter |
+| `vim-fugitive` | Full git workflow (`<leader>gs/gc/gp/gl/gd/gb`) |
+| `nvim-surround` | Change/add/delete surrounding chars |
+| `nvim-autopairs` | Auto-close brackets and quotes |
+| `Comment.nvim` | Toggle comments (`gcc`, `gc` in visual) |
+| `vim-visual-multi` | Multiple cursors (`Ctrl+N`) |
+| `indent-blankline` | Vertical indent guides |
+| `nvim-treesitter` | Parser management for syntax highlighting |
+| `neoscroll` | Smooth scrolling |
+| `alpha-nvim` | Start screen with recent files |
+| `catppuccin/nvim` | Catppuccin Mocha colorscheme |
+
+Leader key is `Space`. Split navigation uses `Ctrl+h/j/k/l`.
 
 ### `ghostty`
 
